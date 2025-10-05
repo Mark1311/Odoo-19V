@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Author      : Varanval IT Solutions
+    Copyright   : (c) 2025 Varanval IT Solutions. All Rights Reserved.
+    License     : Odoo Proprietary License v1.0 (OPL-1)
+-->
+<templates id="vits_pos_change_logo_v1.Navbar" xml:space="preserve">
+    <t t-name="vits_pos_change_logo_v1.Navbar"
+       t-inherit="point_of_sale.Navbar"
+       t-inherit-mode="extension"
+       owl="1">
+        <xpath expr="//img[contains(@class, 'pos-logo')]" position="replace">
+            <t t-if="this.pos.company_logo">
+                <img t-att-src="'data:image/png;base64,' + this.pos.company_logo"
+                     height="42"
+                     class="pos-logo pos-logo mw-100"
+                     t-on-click="() => debug.toggleWidget()"
+                     alt="Custom POS Logo"/>
+            </t>
+            <t t-else="">
+                <img src="/web/static/img/logo.png"
+                     height="42"
+                     class="pos-logo pos-logo mw-100"
+                     t-on-click="() => debug.toggleWidget()"
+                     alt="Default Logo"/>
+            </t>
+        </xpath>
+    </t>
+</templates>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    Author      : Varanval IT Solutions
+    Copyright   : (c) 2025 Varanval IT Solutions. All Rights Reserved.
+    License     : Odoo Proprietary License v1.0 (OPL-1)
+-->
+<templates id="vits_pos_change_logo_v1.ReceiptHeader" xml:space="preserve">
+    <t t-name="vits_pos_change_logo_v1.ReceiptHeader"
+       t-inherit="point_of_sale.ReceiptHeader"
+       t-inherit-mode="extension"
+       owl="1">
+        <xpath expr="//img[contains(@class, 'pos-receipt-logo')]" position="replace">
+            <t t-if="this.pos.company_logo">
+                <img t-att-src="'data:image/png;base64,' + this.pos.company_logo"
+                     class="pos-receipt-logo"
+                     alt="Custom POS Logo"/>
+            </t>
+            <t t-else="">
+                <img t-attf-src="/web/image?model=res.company&amp;id={{props.data.company.id}}&amp;field=logo"
+                     class="pos-receipt-logo"
+                     alt="Default Company Logo"/>
+            </t>
+        </xpath>
+    </t>
+</templates>
