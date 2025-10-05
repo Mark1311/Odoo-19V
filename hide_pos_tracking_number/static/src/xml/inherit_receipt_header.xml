@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    Author      : Varanval IT Solutions
+    Copyright   : (c) 2025 Varanval IT Solutions. All Rights Reserved.
+    License     : Odoo Proprietary License v1.0 (OPL-1)
+-->
+<templates id="vits_hide_tracking_number_receipt" xml:space="preserve">
+    <t t-name="vits_hide_tracking_number_receipt.ReceiptHeader" t-inherit="point_of_sale.ReceiptHeader"
+       t-inherit-mode="extension" owl="1">
+        <xpath expr="//span[contains(@class, 'tracking-number') and contains(@class, 'fs-1')]" position="replace">
+            <t t-if="!this.env.services.pos.config.pos_hide_tracking_number">
+                <span class="tracking-number fs-1" t-esc="props.data.trackingNumber"/>
+            </t>
+        </xpath>
+    </t>
+</templates>
